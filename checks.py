@@ -7,13 +7,15 @@ from selenium.common.exceptions import TimeoutException
 
 class Checks:
     def __init__(self):
-        pass
+        self.pegasus_url= 'http://20.246.179.188:5000'
+        self.eventhub_url= 'http://52.154.67.55'
+        self.resume_url= 'http://mirshukhman.com'
         
     def check_pegasus(self):
         driver = webdriver.Chrome()
         driver.maximize_window()
         try:
-            driver.get('http://20.246.179.188:5000/redirect_to_searchforflightbyid')
+            driver.get(f'{self.pegasus_url}/redirect_to_searchforflightbyid')
             
             input_element = driver.find_element("id",'flight_id')
             submit_button = driver.find_element("id",'search_for_flight_by_id_button')
@@ -41,7 +43,7 @@ class Checks:
         driver = webdriver.Chrome()
         driver.maximize_window()
         try:
-            driver.get('http://172.214.123.238/')
+            driver.get(self.eventhub_url)
 
             menu_button = driver.find_element(By.CSS_SELECTOR,'#open-sidebar button')
             menu_button.click()
@@ -76,7 +78,7 @@ class Checks:
             driver = webdriver.Chrome()
             driver.maximize_window()
             try:
-                driver.get('http://20.253.70.24/')
+                driver.get(self.resume_url)
 
                 name_input = driver.find_element(By.CSS_SELECTOR,'#message-form #name')
 
